@@ -1,0 +1,11 @@
+%imadjust(f,[low_in,heigh_in],[low_out,heigh_out],gamma)
+%[low_in,heigh_in]->[low_out,heigh_out]
+I = imread('pic.jpg');
+I_grey = rgb2gray(I);
+I2 = medfilt2(I_grey);
+figure('Name','Standardowy obrazek');
+subplot(2,2,1),imshow(I);
+subplot(2,2,2), imhist(I);
+subplot(2,2,3),imshow(I2);
+subplot(2,2,2), imhist(I);
+
