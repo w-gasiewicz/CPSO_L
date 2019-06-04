@@ -32,3 +32,40 @@ subplot(2,2,2), imhist(I);
 subplot(2,2,3),imshow(Filter);
 subplot(2,2,4), imhist(Filter);
 
+figure('Name','Filtry');
+w=fspecial('laplacian',0)
+g1=imfilter(f,w,'replicate');
+subplot(2,2,1);
+imshow(g1,[]);
+
+w=fspecial('average', 50);
+g1=imfilter(f,w,'replicate');
+subplot(2,2,2);
+imshow(g1,[]);
+
+
+f2=double(f);
+g2=imfilter(f2,w,'replicate');
+subplot(2,2,3);
+imshow(g2,[]);
+
+subplot(2,2,4);
+g=f2-g2;
+imshow(g);
+ 
+ figure('Name','Filtry');
+w4=fspecial('laplacian',0);
+w8=[1 1 1 ; 1 -8 1 ; 1 1 1];
+f1=double(f);
+g4=f1-imfilter(f1,w4,'replicate');
+g8=f1-imfilter(f1,w8,'replicate');
+
+subplot(2,2,1);
+imshow(g4);
+
+subplot(2,2,2);
+imshow(g8);
+
+fn=imnoise(f, 'salt & pepper', 0.02);
+subplot(2,2,3);
+imshow(fn);
